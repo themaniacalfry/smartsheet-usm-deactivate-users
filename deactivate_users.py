@@ -22,6 +22,13 @@ PROCESSED_USERS_CSV = "processed_users.csv"
 # Initialize Smartsheet client
 smartsheet = client.Smartsheet(SMARTSHEET_TOKEN)
 
+# Load processed users
+def load_processed_users():
+    if not os.path.exists(PROCESSED_USERS_CSV):
+        return set()
+    with open(PROCESSED_USERS_CSV, "r") as file:
+        return {row[0] for row in csv.reader(file)}
+
 # Retrieves all users in the account
 def get_all_users():
     all_users = []
@@ -165,6 +172,7 @@ def deactivate_user(user_id, email):
 # Process users from input CSV
 def process_users():
     print(f"Processing users from '{INPUT_USERS_CSV}'")
+    processed_users = load_processed_users()
 
     all_users = get_all_users()
     print(f"Found {len(all_users)} existing users.")
@@ -183,9 +191,10 @@ def process_users():
                 email = user[0]
                 domain = email.split("@")[1]
 
-                print()
-
-                if email in existing_user_emails:
+                if email in processed_users:
+                    print(f"Skipping already processed user: {email}")
+                    continue
+                elif email in existing_user_emails:
                     user_id = next((user.id for user in all_users if user.email == email), None)
                     if user_id:
                         deactivate_list.append({'id': user_id, 'email': email})
