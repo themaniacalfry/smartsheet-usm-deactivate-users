@@ -1,5 +1,8 @@
 # Smartsheet Bulk Deactivate Users
 
+## About
+The Deactivate User script was created to **help** streamline the process of cleaning up user access before transitioning to User System Management (USM) in Smartsheet. **While the script and information provided herein were developed based of generally known best practices, Smartsheet does not guarantee your use of the script will provide its desired results in each specific circumstance.**
+
 ## Overview
 This Python script automates user invitations and deactivating users:
 - Retrieving all users from the Smartsheet account using pagination.
