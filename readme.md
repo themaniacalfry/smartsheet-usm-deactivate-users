@@ -27,7 +27,7 @@ The new User Subscription Model (USM) introduces Provisional Members—users who
 1. **Never invited** – Users who have never been invited to join your plan.
 2. **Removed users** – Users previously removed by a System Admin but still have access to shared assets.
 
-Since these users exist outside the governance of the System Admin, they must be formally invited to join the account. All invited users must accept the invitation before they are added, except for users with domains configured in [User Auto Provisioning (UAP)](https://help.smartsheet.com/learning-track/system-admin/user-auto-provisioning). Users with verified UAP domains will bypass the invitation process and become fully manageable within the system.
+Since these users exist outside the governance of the System Admin, they must be formally invited to join the account. All invited users must accept the invitation before they are added, except for users with domains configured in [User Auto Provisioning (UAP)](https://help.smartsheet.com/learning-track/system-admin/user-auto-provisioning). Users with verified UAP domains will bypass the invitation process and become fully manageable within the system. **This process requires the use of UAP. Be sure to add the domains to the domains list in your .env file**.
 
 This script ensures compliance by:
 1. Processing only users already in your account.
@@ -38,7 +38,7 @@ As a System Admin of your Smartsheet account, you can download the Sheet Access 
 
 To prevent these users from being included in USM, follow these steps:
 
-Create a CSV file named input_users.csv.
+Create a CSV file named **input_users.csv**.
 List the email addresses of all users you wish to deactivate.
 Ensure the first row of the file contains the column header: Email.
 This CSV will be used by the script to deactivate the specified users, ensuring they are no longer part of your Smartsheet account.
