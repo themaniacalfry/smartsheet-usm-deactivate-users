@@ -46,7 +46,7 @@ This CSV will be used by the script to deactivate the specified users, ensuring 
 ### Required Python Packages
 Ensure you have the following packages installed:
 ```sh
-pip install requests python-dotenv pandas
+pip install requests load_dotenv smartsheet-python-sdk
 ```
 ### Environment Variables
 Create a `.env` file with:
