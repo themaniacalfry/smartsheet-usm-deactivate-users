@@ -24,10 +24,10 @@ This Python script automates user invitations and deactivating users:
 ## Prerequisites
 The new User Subscription Model (USM) introduces Provisional Members—users who are not part of your plan but are still shared on assets owned by your plan. These users fall into two categories:
 
-**Never invited** – Users who have never been invited to join your plan.
-**Removed users** – Users previously removed by a System Admin but still have access to shared assets.
+1. **Never invited** – Users who have never been invited to join your plan.
+2. **Removed users** – Users previously removed by a System Admin but still have access to shared assets.
 
-Since these users exist outside the governance of the System Admin, they must be formally invited to join the account. All invited users must accept the invitation before they are added, except for users with domains configured in **User Auto Provisioning (UAP)**. Users with verified UAP domains will bypass the invitation process and become fully manageable within the system.
+Since these users exist outside the governance of the System Admin, they must be formally invited to join the account. All invited users must accept the invitation before they are added, except for users with domains configured in [User Auto Provisioning (UAP)](https://help.smartsheet.com/learning-track/system-admin/user-auto-provisioning). Users with verified UAP domains will bypass the invitation process and become fully manageable within the system.
 
 This script ensures compliance by:
 1. Processing only users already in your account.
@@ -59,9 +59,9 @@ BASE_URL=https://api.smartsheet.com/2.0
 ## Usage
 ### Running the Script
 ```sh
-python script.py input.csv
+python deactivate_users.py
 ```
-- Replace `input.csv` with your actual CSV file containing email addresses.
+- Replace `user_input.csv` with your actual CSV file containing email addresses.
 - The script will:
   1. Fetch all users from Smartsheet.
   2. Compare them against the CSV.
@@ -73,7 +73,7 @@ python script.py input.csv
 - If rate limits are exceeded, the script will pause and retry automatically.
 
 ### Restarting the Script
-- If interrupted, re-run the script using the same `input.csv`.
+- If interrupted, re-run the script using the same `user_input.csv`.
 - Already processed users will be skipped using the log file.
 
 ## Logging
